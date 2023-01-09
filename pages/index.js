@@ -2,10 +2,44 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "../styles/Home.module.css";
+import { GraphQLClient, gql } from "graphql-request";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+const client = new GraphQLClient("https://api-ap-northeast-1.hygraph.com/v2/clcogbmkd0uq001uh3ypxhqxf/master")
+const QUERY = gql`
+query Posts {
+  posts {
+    id,
+		title,
+    content{
+      html
+    },
+    time,
+    author{
+      name,
+      avatar{
+        url
+      }
+    },
+    coverimg{
+      url
+    }
+  }
+}
+`
+
+export async function getStaticProps(){
+  const { posts } = await client.request(QUERY)
+  return {
+    props: {
+      posts
+    }
+  }
+}
+
+export default function Home({posts}) {
+  console.log('posts', posts)
   return (
     <>
       <Head>
@@ -21,9 +55,9 @@ export default function Home() {
             <svg
               fill="none"
               stroke="currentColor"
-              stroke-width=".7"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth=".7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="feather feather-arrow-up-right"
               viewBox="0 0 24 24"
             >
@@ -80,9 +114,9 @@ export default function Home() {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   className="feather feather-corner-down-right"
                   viewBox="0 0 24 24"
                 >
@@ -119,9 +153,9 @@ export default function Home() {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   className="feather feather-corner-down-right"
                   viewBox="0 0 24 24"
                 >
@@ -158,9 +192,9 @@ export default function Home() {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   className="feather feather-corner-down-right"
                   viewBox="0 0 24 24"
                 >
