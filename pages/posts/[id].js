@@ -1,4 +1,6 @@
 import { GraphQLClient, gql } from "graphql-request";
+import Menu from "../../components/menu";
+import Editor from "../../components/editor"
 
 const client = new GraphQLClient(
   "https://api-ap-northeast-1.hygraph.com/v2/clcogbmkd0uq001uh3ypxhqxf/master"
@@ -52,13 +54,24 @@ export async function getStaticProps({ params }) {
 
 export default function Post({ post }) {
   return (
-    <div className="blog">
-      blog detail
-      <p>{post.title}</p>
-      <p>{post.datePublished}</p>
-      <p>By {post.author.name}</p>
-      <img src={post.coverimg.url} alt="" />
-      <p dangerouslySetInnerHTML={{ __html: post.content.html }}></p>
+    <div className="blog-wrapper">
+      <div className="blog">
+        <Menu />
+        <div className="blog-content">
+          <div className="title">{post.title}</div>
+
+          <div className="blog-author">
+            <img src={post.author.avatar.url} alt="" />
+            <div>
+              <div className="date">{post.datePublished}</div>
+              <div>By {post.author.name}</div>
+            </div>
+          </div>
+         
+          <p dangerouslySetInnerHTML={{ __html: post.content.html }}></p>
+          <Editor content={'console.log("hello world")'} />
+        </div>
+      </div>
     </div>
   );
 }
