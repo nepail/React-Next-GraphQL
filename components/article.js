@@ -1,15 +1,9 @@
+import Marquee from "./marquee";
+
 export default function Article() {
   return (
     <div className="blog-part right-blog">
-      <marquee width="100%" direction="left">
-        {/* <span>Now And Then You Miss It Sounds Make You Cry</span>
-        <span>Now In - MoMa Sharing Exhibition NOW</span>
-        <span>NYC Opens After Long Lockdown Check</span> */}
-        <span>記者實地採訪南區當地居民有人大小便不洗手，不知道是真的還是假的</span>
-        <span>南區公園晚上驚傳有一條黃色的狗大聲嚷嚷，原來是被貓嚇到</span>
-        <span>在台中南區，每 60 秒就有一分鐘過去</span>
-        
-      </marquee>
+      <Marquee />
       <div className="blog-right-title-container">
         <div className="blog-right-title">Featured Articles</div>
         <div className="blog-menu rounded">See All</div>
@@ -24,8 +18,8 @@ export default function Article() {
             Blonde - Widespread Acclaim
           </div>
           <div className="blog-right-page-subtitle">
-            Blonde received widespread acclaim, with critics praising Ocean&apos;s
-            introspective lyrics and the album&apos;s
+            Blonde received widespread acclaim, with critics praising
+            Ocean&apos;s introspective lyrics and the album&apos;s
           </div>
         </div>
         <div className="blog-right-container">
@@ -63,8 +57,8 @@ export default function Article() {
             A24 IS LAUNCHING ITS OWN BEAUTY BRAND
           </div>
           <div className="blog-right-page-subtitle">
-            Blonde received widespread acclaim, with critics praising Ocean&apos;s
-            introspective lyrics and the album&apos;s
+            Blonde received widespread acclaim, with critics praising
+            Ocean&apos;s introspective lyrics and the album&apos;s
           </div>
         </div>
         <div className="blog-right-container">
