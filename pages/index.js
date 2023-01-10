@@ -112,7 +112,7 @@ export default function Home({posts}) {
               <p>
                 {post.description}
               </p>
-              <a href="#">
+              <a href={'/posts/'+post.id}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
